@@ -1,0 +1,42 @@
+<!-- feedback/templates/feedback/home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Home</title>
+</head>
+<body>
+    <h1>Welcome to Feedback</h1>
+    <a href="{% url 'item_list' %}">View Feedback Items</a>
+</body>
+</html>
+
+<!-- feedback/templates/feedback/item_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Items</title>
+</head>
+<body>
+    <h1>Feedback Items</h1>
+    <ul>
+    {% for item in items %}
+        <li><a href="{% url 'item_detail' item.pk %}">{{ item.title }}</a></li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
+
+<!-- feedback/templates/feedback/item_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Item Detail</title>
+</head>
+<body>
+    <h1>{{ item.title }}</h1>
+    <p>{{ item.content }}</p>
+    <p>Created at: {{ item.created_at }}</p>
+    <a href="{% url 'item_list' %}">Back to List</a>
+</body>
+</html>
